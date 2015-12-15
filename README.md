@@ -22,7 +22,13 @@ TBD
 
 ## Usage [&#x219F;](#contents)
 
-FIXME
+```clojure
+=> (require '[reggae.core :as reggae])
+=> (def client (reggae/make-client :host "172.16.0.42"))
+#'client
+=> (def conn (reggae/conn client :mode reggae/open-read-write))
+#'conn
+```
 
 
 ## License [&#x219F;](#contents)
