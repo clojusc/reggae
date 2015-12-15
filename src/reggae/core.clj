@@ -7,13 +7,13 @@
 (def open-exclusive Database/OPEN_EXCLUSIVE)
 
 (defn make-client [& {:keys [scheme host port]
-                      :or {scheme :http host "127.0.0.1" port 9418}
+                      :or {scheme :http host "127.0.0.1" port 7001}
                       :as args}]
   (RasImplementation. (format "%s://%s:%s" scheme host port)))
 
-(defn conn [client & {:keys [dbname mode]
-                      :or {dbname "rasdaman" mode open-read-only}}]
+(defn conn [client & {:keys [name mode]
+                      :or {name "rasdaman" mode open-read-only}}]
   (let [db (.newDatabase client)]
-    (.open db dbname mode)
+    (.open db name mode)
     db))
 
