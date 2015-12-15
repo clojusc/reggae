@@ -1,14 +1,28 @@
 # reggae
 
-A Clojure library designed to ... well, that part is up to you.
+*A Clojure wrapper for the Rasdaman Java Client Library*
 
-## Usage
+[![][logo]][logo-large]
+
+[logo]: resources/images/clj-reggea-logo-3.png
+[logo-large]: resources/images/clj-reggea-logo-3-large.png
+
+*Utility functions for LFE*
+
+##### Contents
+
+* [Introduction](#introduction-)
+* [Usage](#usage-)
+* [License](#license-)
+
+## Introduction [&#x219F;](#contents)
+
+TBD
+
+## Usage [&#x219F;](#contents)
 
 FIXME
 
-## License
+## License [&#x219F;](#contents)
 
-Copyright © 2015 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+TBD
