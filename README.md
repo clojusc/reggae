@@ -32,15 +32,19 @@ Rasdaman comes with client libraries written in C++ and Java. The Clojure reggae
 
 ## Usage [&#x219F;](#contents)
 
+
+### Connecting
+
 ```clojure
 => (require '[reggae.core :as reggae])
 => (def client (reggae/make-client :host "172.16.0.42"))
 #'client
 => (def conn (reggae/conn client
-                          :name "RASBASE"
                           :mode reggae/open-read-write))
 #'conn
 ```
+
+
 
 
 ## License [&#x219F;](#contents)

@@ -11,9 +11,9 @@
                       :as args}]
   (RasImplementation. (format "%s://%s:%s" scheme host port)))
 
-(defn conn [client & {:keys [name mode]
-                      :or {name "rasdaman" mode open-read-only}}]
+(defn conn [client & {:keys [dbname mode]
+                      :or {dbname "RASBASE" mode open-read-only}}]
   (let [db (.newDatabase client)]
-    (.open db name mode)
+    (.open db dbname mode)
     db))
 
