@@ -1,6 +1,5 @@
 (ns reggae.core
-  (:import [rasj RasImplementation]
-           [org.odmg Database]))
+  (:require [reggae.db :as db]))
 
 (defn get-client-template [scheme host port dbname mode]
   {:scheme scheme
@@ -11,21 +10,6 @@
    :client nil
    :conn nil})
 
-(defn get-mode [mode]
-  (case mode
-    :read-only Database/OPEN_READ_ONLY
-    :read-write Database/OPEN_READ_WRITE
-    :exclusive Database/OPEN_EXCLUSIVE))
-
-(defn new-client [scheme host port]
-  (new RasImplementation
-       (format "%s://%s:%s" scheme host port)))
-
-(defn new-connection [client-obj dbname mode]
-  (let [db (.newDatabase client-obj)]
-    (.open db dbname (get-mode mode))
-    db))
-
 (defn make-client [& {:keys [scheme host port dbname mode]
                       :or {scheme :http
                            host "127.0.0.1"
@@ -33,8 +17,8 @@
                            dbname "RASBASE"
                            mode :read-only}}]
   (let [client (get-client-template scheme host port dbname mode)
-        client-obj (new-client scheme host port)
-        conn-obj (new-connection client-obj dbname mode)]
+        client-obj (db/new-client scheme host port)
+        conn-obj (db/new-connection client-obj dbname mode)]
     (-> client
         (assoc :client client-obj)
         (assoc :conn conn-obj))))
@@ -42,7 +26,7 @@
 (defn- -get-conn [client dbname mode]
   (if (:conn client)
     client
-    (assoc client :conn (new-connection (:client client) dbname mode))))
+    (assoc client :conn (db/new-connection (:client client) dbname mode))))
 
 (defn get-conn [client & {:keys [dbname mode return-client]
                           :or {dbname (:dbname client)
@@ -63,15 +47,11 @@
       (update-client :conn nil :dbname dbname :mode mode)
       (get-conn :return-client true)))
 
-(defn- -run-query [client-obj query-str]
-  (-> (.newOQLQuery client-obj)
-      (#(do (.create % query-str) %))
-      (.execute)))
-
 (defn query [client query-str]
   (let [client-obj (:client client)
         tx (.newTransaction client-obj)]
+    ;; XXX add with or try/finally form here, to avoid orphanned tx
     (.begin tx)
-    (let [results (-run-query client-obj query-str)]
+    (let [results (db/run-query client-obj query-str)]
       (.commit tx)
       results)))
