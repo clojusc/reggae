@@ -7,6 +7,7 @@
 [logo]: resources/images/clj-reggea-logo-3.png
 [logo-large]: resources/images/clj-reggea-logo-3-large.png
 
+**NOTICE**: This library is a work in progress and general experiment. Please don't expect anything to work! That being said, feel free to submit tickets for features you'd like to see, missing methods you'd like wrapped.
 
 ##### Contents
 
