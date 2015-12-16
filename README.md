@@ -26,6 +26,7 @@ Rasdaman comes with client libraries written in C++ and Java. The Clojure reggae
 ## Dependencies [&#x219F;](#contents)
 
  * A running instance of Rasdaman
+ * PostgreSQL and postgis
  * The Rasdaman PostgreSQL backend configured to accept network connections
  * ``lein``
 
@@ -37,15 +38,37 @@ Rasdaman comes with client libraries written in C++ and Java. The Clojure reggae
 
 ```clojure
 => (require '[reggae.core :as reggae])
+nil
 => (def client (reggae/make-client :host "172.16.0.42"))
 #'client
-=> (def conn (reggae/conn client
-                          :mode reggae/open-read-write))
-#'conn
 ```
 
+### Querying
 
-
+```clojure
+=> (def r (reggae/query client "select sdom(m) from Multiband as m"))
+#'r
+=> (type r)
+rasj.odmg.RasBag
+=> (.size r)
+9
+=> (def r1 (first (take 1 r)))
+#'r1
+=> (type r1)
+rasj.RasMInterval
+=> (.dimension r1)
+2
+=> (.low (.item r1 0))
+0
+=> (.low (.item r1 0))
+0
+=> (.high (.item r1 0))
+4656
+=> (.low (.item r1 1))
+0
+=> (.high (.item r1 1))
+4922
+```
 
 ## License [&#x219F;](#contents)
 
