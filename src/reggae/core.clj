@@ -1,5 +1,6 @@
 (ns reggae.core
-  (:require [reggae.db :as db]))
+  (:require [clojure.tools.logging :as log]
+            [reggae.db :as db]))
 
 (defn get-client-template [scheme host port dbname mode]
   {:scheme scheme
@@ -50,8 +51,15 @@
 (defn query [client query-str]
   (let [client-obj (:client client)
         tx (.newTransaction client-obj)]
-    ;; XXX add with or try/finally form here, to avoid orphanned tx
-    (.begin tx)
-    (let [results (db/run-query client-obj query-str)]
-      (.commit tx)
-      results)))
+    (try
+      (do
+        (log/debugf "Starting transation %s ..." tx)
+        (.begin tx)
+        (let [results (db/run-query client-obj query-str)]
+          (log/debugf "Committing transaction %s ..." tx)
+          (.commit tx)
+          results))
+      (catch Exception err
+        (log/errorf "Error in query: %s" err)
+        (log/debug "Aborting transation %s ..." tx)
+        (.abort tx)))))
