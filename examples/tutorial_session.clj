@@ -25,6 +25,17 @@
 ;;
 
 (reggae/query client "select sdom(m) from Multiband as m")
+(def r (reggae/query client "select sdom(m) from Multiband as m"))
+(type r)
+(.size r)
+(def r1 (first (take 1 r)))
+(type r1)
+(.dimension r1)
+(.low (.item r1 0))
+(.high (.item r1 0))
+(.low (.item r1 1))
+(.high (.item r1 1))
+
 (reggae/query client "select m[2000,1000] from Multiband as m")
 
 ;; Now do the next import:
