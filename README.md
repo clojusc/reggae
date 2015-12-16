@@ -20,7 +20,7 @@
 
 The [Rasdaman site](http://www.rasdaman.org/) touts the database as the World's Leading Array Database, allowing users to store and query massive multi-dimensional ​arrays such as sensor, image, simulation, and statistics data appearing in domains like earth, space, and life science. During a review in Fall 2014, independent experts unanimously attested that, based on "proven evidence", rasdaman will "significantly transform the way scientists access and use data in a way that hitherto was not possible".
 
-Rasdaman comes with client libraries written in C++ and Java. The Clojure reggae library is a thing wrapper around the Java library, allowing for idiomatic Clojure when working with Rasdaman.
+Rasdaman comes with client libraries written in C++ and Java. The Clojure reggae library is a thin wrapper around the Java library, allowing for idiomatic Clojure when working with Rasdaman.
 
 
 ## Dependencies [&#x219F;](#contents)
