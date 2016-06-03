@@ -12,6 +12,7 @@
 
 * [Introduction](#introduction-)
 * [Dependencies](#dependencies-)
+* [Installation](#installation-)
 * [Usage](#usage-)
   * [Startup](#startup-)
   * [Connecting](#connecting-)
@@ -32,6 +33,16 @@ Rasdaman comes with client libraries written in C++ and Java. The Clojure reggae
  * PostgreSQL and postgis
  * The Rasdaman PostgreSQL backend configured to accept network connections
  * ``lein``
+
+
+## Installation [&#x219F;](#contents)
+
+Add [![Clojars Project][clojars-badge]][clojars] to your ``project.clj`` file. Then, in the namespace where you want to use Reggae:
+
+```clj
+(ns your.gis.project
+  (:require [reggae.core :as reggae]))
+```
 
 
 ## Usage [&#x219F;](#contents)
