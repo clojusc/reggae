@@ -1,6 +1,6 @@
 (defproject clojusc/reggae "0.1.1-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
+  :description "A Clojure wrapper for the Rasdaman Java Client Library"
+  :url "https://github.com/clojusc/reggae"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :repl-options {:init-ns reggae.dev}
