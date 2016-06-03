@@ -84,7 +84,7 @@ rasj.RasMInterval
 
 ## License [&#x219F;](#contents)
 
-Copyright © 2016 Duncan McGreggor
+Copyright © 2015-2016 Duncan McGreggor
 
 Distributed under the Eclipse Public License, the same as Clojure.
 
