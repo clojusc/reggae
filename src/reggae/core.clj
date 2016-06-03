@@ -1,6 +1,7 @@
 (ns reggae.core
   (:require [clojure.tools.logging :as log]
-            [reggae.db :as db]))
+            [reggae.db :as rdb]
+            [reggae.query :as rq]))
 
 (defn get-client-template [scheme host port dbname mode]
   {:scheme scheme
@@ -18,8 +19,8 @@
                            dbname "RASBASE"
                            mode :read-only}}]
   (let [client (get-client-template scheme host port dbname mode)
-        client-obj (db/new-client scheme host port)
-        conn-obj (db/new-connection client-obj dbname mode)]
+        client-obj (rdb/new-client scheme host port)
+        conn-obj (rdb/new-connection client-obj dbname mode)]
     (-> client
         (assoc :client client-obj)
         (assoc :conn conn-obj))))
@@ -27,7 +28,7 @@
 (defn- -get-conn [client dbname mode]
   (if (:conn client)
     client
-    (assoc client :conn (db/new-connection (:client client) dbname mode))))
+    (assoc client :conn (rdb/new-connection (:client client) dbname mode))))
 
 (defn get-conn [client & {:keys [dbname mode return-client]
                           :or {dbname (:dbname client)
@@ -55,7 +56,7 @@
       (do
         (log/debugf "Starting transation %s ..." tx)
         (.begin tx)
-        (let [results (db/run-query client-obj query-str)]
+        (let [results (rq/run client-obj query-str)]
           (log/debugf "Committing transaction %s ..." tx)
           (.commit tx)
           results))
