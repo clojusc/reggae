@@ -1,7 +1,7 @@
 (ns reggae.rasj.types.point
   (:require [clojure.tools.logging :as log])
   (:import [rasj RasPoint])
-  (:refer-clojure :exclude [nth]))
+  (:refer-clojure :exclude [nth iterate]))
 
 (defprotocol ReggaePoint
   "Represents a Reggae (Rasdaman) interval."
@@ -48,10 +48,22 @@
 
 (extend RasPoint ReggaePoint reggae-point-behaviour)
 
-(defn low [point]
+(defn low
+  ""
+  [point]
   (nth point 0))
 
-(defn high [point]
+(defn high
+  ""
+  [point]
   (->> (dim point)
        (dec)
        (nth point)))
+
+(defn ->vector
+  ""
+  [point]
+  (->> (dim point)
+       (range)
+       (map #(nth point %))
+       (into [])))

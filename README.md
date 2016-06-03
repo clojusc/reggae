@@ -85,22 +85,22 @@ reggae.dev=> (map interval/->vector result)
 ```
 
 In that example we used a convenience function from the ``interval`` namespace.
-You still have access to all the Rasdaman object, should you with to use those:
+You still have access to all the Rasdaman objects, should you wish to use those:
 
 ```clj
+reggae.dev=> (require '[reggae.rasj.types.interval :as rinterval]
+                      '[reggae.rasj.types.point :as rpoint])
+nil
 reggae.dev=> (def first-interval (first result))
 #'reggae.dev/first-interval
 reggae.dev=> first-interval
 #object[rasj.RasMInterval 0x1c2d6398 "[0:4656,0:4922]"]
-reggae.dev=> (require '[reggae.rasj.types.interval :as rinterval]
-                      '[reggae.rasj.types.point :as rpoint])
-nil
 reggae.dev=> (rinterval/get-extent first-interval)
 #object[rasj.RasPoint 0x3125fd2d "[4657,4923]"]
 reggae.dev=> (-> first-interval
                  (rinterval/get-extent)
-                 (rpoint/low))
-4657
+                 (rpoint/->vector))
+[4657 4923]
 ```
 
 

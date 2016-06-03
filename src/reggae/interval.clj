@@ -6,5 +6,6 @@
 (defn ->vector
   ""
   [interval]
-  (let [extent (interval/get-extent interval)]
-    [(point/nth extent 0) (point/nth extent 1)]))
+  (-> interval
+      (interval/get-extent)
+      (point/->vector)))
