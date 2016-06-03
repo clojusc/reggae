@@ -37,7 +37,11 @@ Rasdaman comes with client libraries written in C++ and Java. The Clojure reggae
 
 ## Installation [&#x219F;](#contents)
 
-Add [![Clojars Project][clojars-badge]][clojars] to your ``project.clj`` file. Then, in the namespace where you want to use Reggae:
+Add the following to your ``project.clj`` file's ``:dependencies``:
+
+[![Clojars Project][clojars-badge]][clojars]
+
+Then, in the namespace where you want to use Reggae:
 
 ```clj
 (ns your.gis.project
