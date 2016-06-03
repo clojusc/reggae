@@ -60,7 +60,7 @@ $ lein repl
 
 ### Connecting [&#x219F;](#contents)
 
-```clojure
+```clj
 reggae.dev=> (require '[reggae.core :as reggae])
 nil
 reggae.dev=> (def rashost "127.0.0.1")
@@ -73,27 +73,34 @@ reggae.dev=>
 
 ### Querying [&#x219F;](#contents)
 
-```clojure
-=> (def r (reggae/query client "select sdom(m) from Multiband as m"))
-#'r
-=> (type r)
-rasj.odmg.RasBag
-=> (.size r)
-9
-=> (def r1 (first (take 1 r)))
-#'r1
-=> (type r1)
-rasj.RasMInterval
-=> (.dimension r1)
-2
-=> (.low (.item r1 0))
-0
-=> (.high (.item r1 0))
-4656
-=> (.low (.item r1 1))
-0
-=> (.high (.item r1 1))
-4922
+```clj
+(require '[reggae.interval :as interval])
+reggae.dev=> (def query-str "select sdom(m) from Multiband as m")
+#'reggae.dev/query-str
+reggae.dev=> (def result (reggae/query client query-str))
+#'reggae.dev/result
+reggae.dev=> (map interval/->vector result)
+([4657 4923] [4657 4923] [4657 4923] [4657 4923] [4657 4923]
+ [4657 4923] [4657 4923] [4657 4923] [17 18])
+```
+
+In that example we used a convenience function from the ``interval`` namespace.
+You still have access to all the Rasdaman object, should you with to use those:
+
+```clj
+reggae.dev=> (def first-interval (first result))
+#'reggae.dev/first-interval
+reggae.dev=> first-interval
+#object[rasj.RasMInterval 0x1c2d6398 "[0:4656,0:4922]"]
+reggae.dev=> (require '[reggae.rasj.types.interval :as rinterval]
+                      '[reggae.rasj.types.point :as rpoint])
+nil
+reggae.dev=> (rinterval/get-extent first-interval)
+#object[rasj.RasPoint 0x3125fd2d "[4657,4923]"]
+reggae.dev=> (-> first-interval
+                 (rinterval/get-extent)
+                 (rpoint/low))
+4657
 ```
 
 
