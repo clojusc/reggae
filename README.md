@@ -1,4 +1,4 @@
-# reggae [![Build Status][travis-badge]][travis][![GitHub tag][tag-badge]][tag][![Dependencies Status][deps-badge]][deps][![Clojure version][clojure-v]](project.clj)
+# reggae [![Build Status][travis-badge]][travis][![Dependencies Status][deps-badge]][deps][![GitHub tag][tag-badge]][tag][![Clojure version][clojure-v]](project.clj)
 
 *A Clojure wrapper for the Rasdaman Java Client Library*
 
