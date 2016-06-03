@@ -1,7 +1,7 @@
 (ns reggae.core-test
   (:require [clojure.test :refer :all]
-            [reggae.core :refer :all]))
+            [reggae.core :as reggae]))
 
 (deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+  (testing "Placeholder test ..."
+    (is (= 1 1))))
