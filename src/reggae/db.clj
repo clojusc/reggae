@@ -19,9 +19,3 @@
   (let [db (.newDatabase client-obj)]
     (.open db dbname (get-mode mode))
     db))
-
-(defn run-query [client-obj query-str]
-  (log/debugf "Running query '%s'..." query-str)
-  (-> (.newOQLQuery client-obj)
-      (#(do (.create % query-str) %))
-      (.execute)))
