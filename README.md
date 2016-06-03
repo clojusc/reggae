@@ -1,4 +1,4 @@
-# reggae [![Build Status][travis-badge]][travis][![GitHub tag][github-tag]]()[![Dependencies Status][deps-badge]][deps][![Clojure versions][clojure-v]]()
+# reggae [![Build Status][travis-badge]][travis][![GitHub tag][tag-badge]][tag][![Dependencies Status][deps-badge]][deps][![Clojure version][clojure-v]](project.clj)
 
 *A Clojure wrapper for the Rasdaman Java Client Library*
 
@@ -97,5 +97,6 @@ Distributed under the Eclipse Public License, the same as Clojure.
 [deps-badge]: http://jarkeeper.com/clojusc/reggae/status.svg
 [logo]: resources/images/clj-reggea-logo-3.png
 [logo-large]: resources/images/clj-reggea-logo-3-large.png
-[github-tag]: https://img.shields.io/github/tag/clojusc/reggae.svg?maxAge=2592000
+[tag-badge]: https://img.shields.io/github/tag/clojusc/reggae.svg?maxAge=2592000
+[tag]: https://github.com/clojusc/reggae/tags
 [clojure-v]: https://img.shields.io/badge/clojure-1.8.0-blue.svg
