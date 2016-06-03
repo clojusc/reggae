@@ -23,7 +23,7 @@ export RASHOST=10.0.4.193
 # data:
 export DATASETS=$HOME/tutorial/datasets/OGRS14
 # servlet:
-export WCS2_ENDPOINT="http://${RASHOST}:8080/rasdaman/ows/wcs2"
+export WCS2_ENDPOINT="http://${RASHOST}:8080/rasdaman/ows/wcs"
 export SECORE_ENDPOINT="http://${RASHOST}:8080/def"
 
 # You'll also need to ensure you do the following:
