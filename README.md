@@ -1,4 +1,4 @@
-# reggae [![Build Status][travis-badge]][travis][![Dependencies Status][deps-badge]][deps][![GitHub tag][tag-badge]][tag][![Clojure version][clojure-v]](project.clj)
+# reggae [![Build Status][travis-badge]][travis][![Dependencies Status][deps-badge]][deps][![GitHub tag][tag-badge]][tag][![Clojars Project][clojars-badge]][clojars][![Clojure version][clojure-v]](project.clj)
 
 *A Clojure wrapper for the Rasdaman Java Client Library*
 
@@ -36,14 +36,14 @@ Rasdaman comes with client libraries written in C++ and Java. The Clojure reggae
 
 ## Usage [&#x219F;](#contents)
 
-### Startup
+### Startup [&#x219F;](#contents)
 
 ```
 $ lein repl
 ```
 
 
-### Connecting
+### Connecting [&#x219F;](#contents)
 
 ```clojure
 reggae.dev=> (require '[reggae.core :as reggae])
@@ -56,7 +56,7 @@ reggae.dev=>
 ```
 
 
-### Querying
+### Querying [&#x219F;](#contents)
 
 ```clojure
 => (def r (reggae/query client "select sdom(m) from Multiband as m"))
@@ -100,3 +100,5 @@ Distributed under the Eclipse Public License, the same as Clojure.
 [tag-badge]: https://img.shields.io/github/tag/clojusc/reggae.svg?maxAge=2592000
 [tag]: https://github.com/clojusc/reggae/tags
 [clojure-v]: https://img.shields.io/badge/clojure-1.8.0-blue.svg
+[clojars]: https://clojars.org/clojusc/reggae
+[clojars-badge]: https://img.shields.io/clojars/v/clojusc/reggae.svg
