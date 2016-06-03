@@ -1,19 +1,21 @@
-# reggae
+# reggae [![Build Status][travis-badge]][travis][![GitHub tag][github-tag]]()[![Dependencies Status][deps-badge]][deps][![Clojure versions][clojure-v]]()
 
 *A Clojure wrapper for the Rasdaman Java Client Library*
 
 [![][logo]][logo-large]
 
-[logo]: resources/images/clj-reggea-logo-3.png
-[logo-large]: resources/images/clj-reggea-logo-3-large.png
 
 **NOTICE**: This library is a work in progress and general experiment. Please don't expect anything to work! That being said, feel free to submit tickets for features you'd like to see, missing methods you'd like wrapped, etc.
+
 
 ##### Contents
 
 * [Introduction](#introduction-)
 * [Dependencies](#dependencies-)
 * [Usage](#usage-)
+  * [Startup](#startup-)
+  * [Connecting](#connecting-)
+  * [Querying](#querying-)
 * [License](#license-)
 
 
@@ -34,15 +36,25 @@ Rasdaman comes with client libraries written in C++ and Java. The Clojure reggae
 
 ## Usage [&#x219F;](#contents)
 
+### Startup
+
+```
+$ lein repl
+```
+
 
 ### Connecting
 
 ```clojure
-=> (require '[reggae.core :as reggae])
+reggae.dev=> (require '[reggae.core :as reggae])
 nil
-=> (def client (reggae/make-client :host "172.16.0.42"))
-#'client
+reggae.dev=> (def rashost "127.0.0.1")
+#'reggae.dev/rashost
+reggae.dev=> (def client (reggae/make-client :host rashost))
+#'reggae.dev/client
+reggae.dev=>
 ```
+
 
 ### Querying
 
@@ -69,6 +81,21 @@ rasj.RasMInterval
 4922
 ```
 
+
 ## License [&#x219F;](#contents)
 
-TBD
+Copyright © 2016 Duncan McGreggor
+
+Distributed under the Eclipse Public License, the same as Clojure.
+
+
+<!-- Named page links below: /-->
+
+[travis]: https://travis-ci.org/clojusc/reggae
+[travis-badge]: https://travis-ci.org/clojusc/reggae.png?branch=master
+[deps]: http://jarkeeper.com/clojusc/reggae
+[deps-badge]: http://jarkeeper.com/clojusc/reggae/status.svg
+[logo]: resources/images/clj-reggea-logo-3.png
+[logo-large]: resources/images/clj-reggea-logo-3-large.png
+[github-tag]: https://img.shields.io/github/tag/clojusc/reggae.svg?maxAge=2592000
+[clojure-v]: https://img.shields.io/badge/clojure-1.8.0-blue.svg
