@@ -74,12 +74,22 @@ reggae.dev=>
 ### Querying [&#x219F;](#contents)
 
 ```clj
-(require '[reggae.interval :as interval])
+(require '[reggae.types :as types])
 reggae.dev=> (def query-str "select sdom(m) from Multiband as m")
 #'reggae.dev/query-str
 reggae.dev=> (def result (reggae/query client query-str))
 #'reggae.dev/result
-reggae.dev=> (map interval/->vector result)
+reggae.dev=> (map types/interval->vector result)
+([4657 4923] [4657 4923] [4657 4923] [4657 4923] [4657 4923]
+ [4657 4923] [4657 4923] [4657 4923] [17 18])
+```
+
+Or, with no assignments:
+
+```clj
+reggae.dev=> (->> "select sdom(m) from Multiband as m"
+                  (reggae/query client)
+                  (map types/interval->vector))
 ([4657 4923] [4657 4923] [4657 4923] [4657 4923] [4657 4923]
  [4657 4923] [4657 4923] [4657 4923] [17 18])
 ```
