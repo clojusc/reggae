@@ -1,7 +1,6 @@
 (ns reggae.rasj.rasstruct
   (:require [clojure.tools.logging :as log])
-  (:import [rasj RasStructure RasStructureType])
-  (:refer-clojure :exclude [get]))
+  (:import [rasj RasStructure RasStructureType]))
 
 (defprotocol ReggaeStruct
   "Represents a Reggae (Rasdaman) struct."
