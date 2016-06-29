@@ -22,15 +22,15 @@
 ;;          -t RGBImage:RGBSet \
 ;;          --crs-uri "${SECORE_ENDPOINT}/crs/EPSG/0/32632"
 ;;
-(require '[reggae.interval :as interval])
+(require '[reggae.types :as types])
 
 (def query-str "select sdom(m) from Multiband as m")
 (def result (reggae/query client query-str))
-(map interval/->vector result)
+(map types/interval->vector result)
 
 (def query-str "select m[2000,1000] from Multiband as m")
 (def result (reggae/query client query-str))
-(map interval/->vector result)
+(map types/struct->vector result)
 
 ;; Now do the next import:
 ;;
@@ -41,7 +41,9 @@
 ;;          --crs-uri ${SECORE_ENDPOINT}/crs/EPSG/0/32632 \
 ;;          --bnd 236000:237000:5850000:5851000
 
-(reggae/query client "select sdom(r) from Multiband as r")
+(->> "select sdom(r) from Multiband as r"
+     (reggae/query client)
+     (map types/interval->vector))
 
 ;; Now do the next import:
 ;;
