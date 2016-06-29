@@ -2,7 +2,6 @@
 
 (def home (System/getenv "HOME"))
 (def rashost "10.0.4.193")
-
 (def client (reggae/make-client :host rashost))
 
 ;; The client data returned from the last call includes a read-only client
@@ -23,20 +22,15 @@
 ;;          -t RGBImage:RGBSet \
 ;;          --crs-uri "${SECORE_ENDPOINT}/crs/EPSG/0/32632"
 ;;
+(require '[reggae.interval :as interval])
 
-(reggae/query client "select sdom(m) from Multiband as m")
-(def r (reggae/query client "select sdom(m) from Multiband as m"))
-(type r)
-(.size r)
-(def r1 (first (take 1 r)))
-(type r1)
-(.dimension r1)
-(.low (.item r1 0))
-(.high (.item r1 0))
-(.low (.item r1 1))
-(.high (.item r1 1))
+(def query-str "select sdom(m) from Multiband as m")
+(def result (reggae/query client query-str))
+(map interval/->vector result)
 
-(reggae/query client "select m[2000,1000] from Multiband as m")
+(def query-str "select m[2000,1000] from Multiband as m")
+(def result (reggae/query client query-str))
+(map interval/->vector result)
 
 ;; Now do the next import:
 ;;

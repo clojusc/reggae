@@ -13,11 +13,13 @@ echo $HOME
 echo $HOSTNAME
 
 # rasdaman
+# * The following was done with the rasdaman *NIX shell account
+# * Rasdaman was installed from source to /home/rasdaman/install
 export RMANHOME=$HOME/install
 export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/
 export JRE_HOME=$JAVA_HOME/jre
 export CATALINA_HOME=/var/lib/tomcat7
-export PATH=$PATH:$RMANHOME/bin:/usr/lib/postgresql/9.4/bin
+export PATH=$RMANHOME/bin:$PATH:/usr/lib/postgresql/9.4/bin
 #export RASHOST=$HOSTNAME
 export RASHOST=10.0.4.193
 # data:
