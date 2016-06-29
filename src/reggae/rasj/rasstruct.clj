@@ -57,4 +57,4 @@
 (defn ->str
   "Return a string representation of the given object."
   [this]
-  (.toString this))
+  (str this))
