@@ -5,6 +5,7 @@
             [reggae.core :as reggae]
             [reggae.types :as types]
             [reggae.query :as query]
+            [reggae.rasj.rasstruct :as rasstruct]
             [reggae.rasj.types.interval :as rinterval]
             [reggae.rasj.types.point :as rpoint]))
 
