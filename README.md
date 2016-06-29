@@ -94,17 +94,28 @@ reggae.dev=> (->> "select sdom(m) from Multiband as m"
  [4657 4923] [4657 4923] [4657 4923] [17 18])
 ```
 
-In that example we used a convenience function from the ``interval`` namespace.
-You still have access to all the Rasdaman objects, should you wish to use those:
+In that example we used a convenience function from the ``types`` namespace.
+You still have access to all the Rasdaman objects (via idiomatic Clojure
+wrappers in ``reggae.rasj``), should you wish to use those:
 
 ```clj
 reggae.dev=> (require '[reggae.rasj.types.interval :as rinterval]
                       '[reggae.rasj.types.point :as rpoint])
 nil
+```
+
+Work with an interval:
+
+```clj
 reggae.dev=> (def first-interval (first result))
 #'reggae.dev/first-interval
 reggae.dev=> first-interval
 #object[rasj.RasMInterval 0x1c2d6398 "[0:4656,0:4922]"]
+```
+
+Work with a point:
+
+```clj
 reggae.dev=> (rinterval/get-extent first-interval)
 #object[rasj.RasPoint 0x3125fd2d "[4657,4923]"]
 reggae.dev=> (-> first-interval
