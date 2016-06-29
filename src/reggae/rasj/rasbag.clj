@@ -3,6 +3,11 @@
   (:import [rasj.odmg RasBag]
            [org.odmg DBag]))
 
+(defn rasbag?
+  ""
+  [obj]
+  (= (type obj) RasBag))
+
 (defprotocol ReggaeBag
   "Represents a Reggae (Rasdaman) bag collection.
 
