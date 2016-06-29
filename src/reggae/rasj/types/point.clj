@@ -4,22 +4,19 @@
   (:refer-clojure :exclude [nth iterate]))
 
 (defprotocol ReggaePoint
-  "Represents a Reggae (Rasdaman) interval."
+  "Represents a Reggae (Rasdaman) point."
   (nth [this index]
     "")
   (set! [this index value]
     "")
-  (equal? [this interval]
+  (equal? [this point]
     "")
-  (not-equal? [this interval]
+  (not-equal? [this point]
     "")
   (dim [this]
     "")
   (get-origin [this]
     "")
-  (get-extent [this]
-    "Gets the size of this interval as a point, that means the point specifies
-    the extent of this MInterval (i.e. ``high`` - ``low`` ) in each dimension.")
   (->str [this]
     "Return a string representation of the ``ReggaePoint``."))
 
