@@ -1,4 +1,4 @@
-(defproject clojusc/reggae "0.1.1-SNAPSHOT"
+(defproject clojusc/reggae "0.1.2-SNAPSHOT"
   :description "A Clojure wrapper for the Rasdaman Java Client Library"
   :url "https://github.com/clojusc/reggae"
   :license {:name "Eclipse Public License"

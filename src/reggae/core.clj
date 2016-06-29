@@ -49,6 +49,7 @@
       (update-client :conn nil :dbname dbname :mode mode)
       (get-conn :return-client true)))
 
+;; XXX use dire here instead of try/catch ...
 (defn query [client query-str]
   (let [client-obj (:client client)
         tx (.newTransaction client-obj)]
