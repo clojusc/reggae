@@ -1,7 +1,9 @@
 (ns reggae.core
   (:require [clojure.tools.logging :as log]
+            [dire.core :refer [with-handler!]]
             [reggae.db :as rdb]
-            [reggae.query :as rq]))
+            [reggae.query :as rq])
+  (:import [org.odmg QueryException]))
 
 (defn get-client-template [scheme host port dbname mode]
   {:scheme scheme
@@ -49,19 +51,26 @@
       (update-client :conn nil :dbname dbname :mode mode)
       (get-conn :return-client true)))
 
-;; XXX use dire here instead of try/catch ...
-(defn query [client query-str]
-  (let [client-obj (:client client)
-        tx (.newTransaction client-obj)]
-    (try
-      (do
-        (log/debugf "Starting transation %s ..." tx)
-        (.begin tx)
-        (let [results (rq/run client-obj query-str)]
-          (log/debugf "Committing transaction %s ..." tx)
-          (.commit tx)
-          results))
-      (catch Exception err
-        (log/errorf "Error in query: %s" err)
-        (log/debug "Aborting transation %s ..." tx)
-        (.abort tx)))))
+(defn query
+  ([client query-str]
+    (let [client-obj (:client client)
+          tx (.newTransaction client-obj)]
+      (query client query-str client-obj tx)))
+  ([client query-str client-obj tx]
+    (log/debugf "Starting transation %s ..." tx)
+    (.begin tx)
+    (let [results (rq/run client-obj query-str)]
+      (log/debugf "Committing transaction %s ..." tx)
+      (.commit tx)
+      results)))
+
+;;; Exception handling
+
+(with-handler! #'query
+  QueryException
+  (fn [e client query-str client-obj tx]
+    (log/tracef "Got args: %s" [client query-str client-obj tx])
+    (log/errorf "Error in query: %s" e)
+    (log/debugf "Aborting transation %s ..." tx)
+    (.abort tx)
+    {:error e :message (.getMessage e) :client client :query query-str}))
