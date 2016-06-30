@@ -5,6 +5,9 @@
 # Modified 12/2015 for custom deployment             #
 # ================================================== #
 
+# The following was copied (and then tweaked) from here:
+#   http://www.rasdaman.org/attachment/wiki/Workshops/BigDataRasdamanApproach/LOG
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~
 # PART 00: shell variables
 # ~~~~~~~~~~~~~~~~~~~~~~~~

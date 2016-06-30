@@ -56,7 +56,10 @@
 ;;          --3D top \
 ;;          --shift 0:0:150118
 
-(reggae/query client "select sdom(m) from aerosol as m")
+(->> "select sdom(m) from aerosol as m"
+     (reggae/query client)
+     (map types/interval->vector))
+
 (reggae/query client "select m[300,2000,150118] from aerosol as m")
 
 ;; Now do the next import:
@@ -70,6 +73,9 @@
 ;;          --csz 1 \
 ;;          --z-coords 1296564600:1296648000:1296736800:1296820200:1296909000:1361364900:1361448900:1361537700:1361620800:1361709600
 
-(reggae/query client "select sdom(m) from IrregularTimeS as m")
+(->> "select sdom(m) from IrregularTimeS as m"
+     (reggae/query client)
+     (map types/interval->vector))
+
 (reggae/query client "select m[5599,3699,0] from IrregularTimeS as m")
 
