@@ -2,6 +2,7 @@
   (:require [clojure.tools.logging :as log]
             [dire.core :refer [with-handler!]]
             [reggae.db :as rdb]
+            [reggae.error :as rerror]
             [reggae.query :as rq])
   (:import [org.odmg QueryException]))
 
@@ -73,4 +74,4 @@
     (log/errorf "Error in query: %s" e)
     (log/debugf "Aborting transation %s ..." tx)
     (.abort tx)
-    {:error e :message (.getMessage e) :client client :query query-str}))
+    (rerror/query-data e client query-str)))
