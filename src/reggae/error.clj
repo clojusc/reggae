@@ -40,3 +40,11 @@
    :message (get-message err)
    :client client-data
    :query query-str})
+
+(defn new-connection
+  "Get the data for a DB connection error."
+  [err db-name mode]
+  {:error err
+   :message (get-message err)
+   :database db-name
+   :mode mode})

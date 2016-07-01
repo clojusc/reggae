@@ -1,6 +1,7 @@
 (ns reggae.db
   (:require [clojure.tools.logging :as log]
-            [dire.core :refer [with-handler!]])
+            [dire.core :refer [with-handler!]]
+            [reggae.error :as rerror])
   (:import [rasj RasImplementation RasClientInternalException]
            [org.odmg Database]))
 
@@ -15,16 +16,18 @@
   (new RasImplementation
        (format "%s://%s:%s" scheme host port)))
 
-(defn new-connection [client-obj dbname mode]
+(defn new-connection [client-obj db-name mode]
   (log/debug "Creating database connection instance and opening it ...")
   (let [db (.newDatabase client-obj)]
-    (.open db dbname (get-mode mode))
+    (.open db db-name (get-mode mode))
     db))
+
+;;; Error handlers
 
 (with-handler! #'new-connection
   RasClientInternalException
-  (fn [e & args]
+  (fn [e client-obj db-name mode]
     (log/error "Could not connect to Rasdaman.")
     (log/debug e)
-    {:error e}))
+    (rerror/new-connection e db-name mode)))
 

@@ -6,7 +6,9 @@
             [reggae.query :as rq])
   (:import [org.odmg QueryException]))
 
-(defn get-client-template [scheme host port dbname mode]
+(defn get-client-template
+  ""
+  [scheme host port dbname mode]
   {:scheme scheme
    :host host
    :port port
@@ -15,12 +17,21 @@
    :client nil
    :conn nil})
 
-(defn make-client [& {:keys [scheme host port dbname mode]
-                      :or {scheme :http
-                           host "127.0.0.1"
-                           port 7001
-                           dbname "RASBASE"
-                           mode :read-only}}]
+(defn make-client
+  "Creates a client data structure used by the Reggae functions that
+  need to communicate with the Rasdaman server. The datastructure is
+  populated with 1) client-related data, 2) a Rasdaman client instance,
+  and 3) a connection instance.
+
+  Note that if there is an error connecting to the server, the data
+  associated with `:conn` won't be a connection instance, but rather
+  the error data for the failure."
+  [& {:keys [scheme host port dbname mode]
+      :or {scheme :http
+           host "127.0.0.1"
+           port 7001
+           dbname "RASBASE"
+           mode :read-only}}]
   (let [client (get-client-template scheme host port dbname mode)
         client-obj (rdb/new-client scheme host port)
         conn-obj (rdb/new-connection client-obj dbname mode)]

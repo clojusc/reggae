@@ -5,6 +5,7 @@
             [clojure.tools.namespace.repl :as repl]
             [clojusc.twig :as logger]
             [reggae.core :as reggae]
+            [reggae.db :as db]
             [reggae.error :as rerror]
             [reggae.types :as types]
             [reggae.query :as query]
@@ -22,7 +23,7 @@
 
 ;;; Developer functions
 
-(defn display-table [obj]
+(defn display-members [obj]
   (-> obj
       (reflect)
       :members
