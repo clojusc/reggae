@@ -3,15 +3,19 @@
 (defprotocol ThrowableProtocol
   "A Clojure wrapper for Throwable."
   (get-cause [this]
-    "Returns the cause of this throwable or `nil` if the cause is nonexistent or unknown.")
+    (str "Returns the cause of this throwable or `nil` if the cause is "
+         "nonexistent or unknown."))
   (get-localized-message [this]
-    "")
+    "Creates a localized description of this throwable.")
   (get-message [this]
-    "")
+    "Returns the detail message string of this throwable.")
   (get-stack-trace [this]
-    "")
+    (str "Provides programmatic access to the stack trace information "
+         "printed by ``print-stack-trace``."))
+  (print-stack-trace [this]
+    "Prints this throwable and its backtrace to the standard error stream.")
   (->str [this]
-    ""))
+    "Returns a short description of this throwable."))
 
 (def throwable-behaviour
   {:get-cause
@@ -22,6 +26,8 @@
     (fn [this] (.getMessage this))
    :get-stack-trace
     (fn [this] (.getStackTrace this))
+   :print-stack-trace
+    (fn [this] (.printStackTrace this))
    :->str
     (fn [this] (.toString this))})
 
