@@ -131,6 +131,9 @@ reggae.dev=> (-> first-interval
 * [Rasdaman Java Developers Guide](http://www.rasdaman.org/browser/manuals_and_examples/manuals/doc-guides/dev-guide-java.pdf)
 * [Rasdaman Query Language Guide](http://www.rasdaman.org/browser/manuals_and_examples/manuals/doc-guides/ql-guide.pdf)
 * [Rasdaman Quickstart](https://live.osgeo.org/en/quickstart/rasdaman_quickstart.html)
+* [New Rasdaman Workshop](http://rasdaman.flanche.net/)
+* [Webinars](http://earthserver.eu/webinars)
+* [Introducing Rasdaman](http://spatial-ecology.net/dokuwiki/doku.php?id=wiki:rasdaman:rasdahome) -Summer school 2016 in Matera, Italy.
 * Deprecated:
   * [Tutorial - Spatio-Temporal Big Data](http://www.rasdaman.org/attachment/wiki/Workshops/BigDataRasdamanApproach/BigDataRasdamanWorkshop.pdf) - Rasdaman Big Data Workshop
   * [Shell Exercises](http://www.rasdaman.org/attachment/wiki/Workshops/BigDataRasdamanApproach/LOG)
