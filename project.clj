@@ -10,7 +10,7 @@
                  [org.rasdaman/rasj "9.0.4"]
                  [dire "0.5.4"]
                  [org.clojure/tools.namespace "0.2.11"]
-                 [clojusc/twig "0.2.1"]]
+                 [clojusc/twig "0.2.3"]]
   :profiles {
     :dev {
       :dependencies [[org.clojure/tools.namespace "0.2.11"]
