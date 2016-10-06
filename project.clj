@@ -18,10 +18,10 @@
         [jonase/eastwood "0.2.3" :exclusions [org.clojure/clojure]]
         [lein-kibit "0.1.2" :exclusions [org.clojure/clojure]]]
       :test-selectors {
-      :default :unit
-      :unit :unit
-      :system :system
-      :integration :integration}}
+        :default :unit
+        :unit :unit
+        :system :system
+        :integration :integration}}
     :dev {
-      :dependencies [[org.clojure/tools.namespace "0.2.11"]
+      :dependencies [[org.clojure/tools.namespace "0.2.11"]]
       :source-paths ["dev-resources/src"]}})
