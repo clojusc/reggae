@@ -5,12 +5,11 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :repl-options {:init-ns reggae.dev}
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [org.clojure/tools.logging "0.3.1"]
                  [odmg/odmg "3.0"]
                  [org.rasdaman/rasj "9.0.4"]
                  [dire "0.5.4"]
                  [org.clojure/tools.namespace "0.2.11"]
-                 [clojusc/twig "0.2.3"]]
+                 [clojusc/twig "0.2.6"]]
   :profiles {
     :uber {
       :aot :all}
