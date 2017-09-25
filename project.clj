@@ -19,6 +19,7 @@
   :url "https://github.com/clojusc/reggae"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :exclusions [org.clojure/clojure]
   :dependencies [
     [clojusc/twig "0.3.2-SNAPSHOT"]
     [dire "0.5.4"]
@@ -42,6 +43,7 @@
         :system :system
         :integration :integration}}
     :dev {
+      :exclusions [org.clojure/clojure]
       :dependencies [
         [org.clojure/tools.namespace "0.2.11"]]
       :source-paths ["dev-resources/src"]
@@ -63,8 +65,9 @@
       "with-profile" "+test" "do"
         ["check"] ["kibit"] ["outlaw"]]
     "build" ["with-profile" "+test" "do"
-      ["check-deps"]
-      ["lint"]
+      ["check"]
+      ;["check-deps"]
+      ;["lint"]
       ["test"]
       ["compile"]
       ["uberjar"]]})
