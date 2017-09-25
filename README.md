@@ -61,6 +61,31 @@ Then, in the namespace where you want to use Reggae:
 ```
 $ lein repl
 ```
+```
+
+888d888 .d88b.  .d88b.  .d88b.  8888b.  .d88b.
+888P"  d8P  Y8bd88P"88bd88P"88b    "88bd8P  Y8b
+888    88888888888  888888  888.d88888888888888
+888    Y8b.    Y88b 888Y88b 888888  888Y8b.
+888     "Y8888  "Y88888 "Y88888"Y888888 "Y8888
+                    888     888
+               Y8b d88PY8b d88P
+                "Y88P"  "Y88P"
+
+
+Loading Clojure code ...
+
+nREPL server started on port 49450 on host 127.0.0.1 - nrepl://127.0.0.1:49450
+REPL-y 0.3.7, nREPL 0.2.12
+Clojure 1.8.0
+Java HotSpot(TM) 64-Bit Server VM 1.8.0_91-b14
+    Docs: (doc function-name-here)
+          (find-doc "part-of-name-here")
+  Source: (source function-name-here)
+ Javadoc: (javadoc java-object-or-class-here)
+    Exit: Control+D or (exit) or (quit)
+ Results: Stored in vars *1, *2, *3, an exception in *e
+ ```
 
 
 ### Connecting [&#x219F;](#contents)
