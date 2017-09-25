@@ -33,8 +33,9 @@
       :exclusions [org.clojure/clojure]
       :plugins [
         [jonase/eastwood "0.2.4"]
+        [lein-ancient "0.6.12"]
         [lein-kibit "0.1.5"]
-        [lein-ancient "0.6.12"]]
+        [lein-shell "0.5.0"]]
       :test-selectors {
         :default :unit
         :unit :unit
