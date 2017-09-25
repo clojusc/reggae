@@ -1,6 +1,5 @@
 (require '[reggae.core :as reggae])
 
-(def home (System/getenv "HOME"))
 (def rashost "10.0.4.193")
 (def client (reggae/make-client :host rashost))
 
