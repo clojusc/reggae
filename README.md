@@ -138,9 +138,10 @@ reggae.dev=> (-> first-interval
   * [Tutorial - Spatio-Temporal Big Data](http://www.rasdaman.org/attachment/wiki/Workshops/BigDataRasdamanApproach/BigDataRasdamanWorkshop.pdf) - Rasdaman Big Data Workshop
   * [Shell Exercises](http://www.rasdaman.org/attachment/wiki/Workshops/BigDataRasdamanApproach/LOG)
 
+
 ## License [&#x219F;](#contents)
 
-Copyright © 2015-2016 Duncan McGreggor
+Copyright © 2015-2017 Duncan McGreggor
 
 Distributed under the Eclipse Public License, the same as Clojure.
 
